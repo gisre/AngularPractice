@@ -1,0 +1,1 @@
+angular.module('myapp', ['hello', 'world', 'text']);

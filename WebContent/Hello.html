@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/hello.css">
+</head>
+<body ng-app="myapp" ng-init="thing = {name : 'world'}">
+  <h1>Hello, {{thing.name}}</h1>
+  <div ng-controller="HelloCtrl">
+    Say hello to: <input type="text" ng-model="thing.name"><br>
+    <h2>Hello, {{getName()}}!</h2>
+    Previous url : {{previousUrl}}<br>
+    Current url : {{currentUrl}} 
+  </div>
+  <ul ng-controller="WorldCtrl">
+		<li ng-repeat="country in countries">
+		  {{country.name}} has population of {{country.population}}
+		  ie. {{worldsPercentage(country.population)}} % of the World's population
+		</li>
+		<hr>
+	  World's population: {{population}} millions
+  </ul>
+  <div class="container" ng-controller="TextAreaWithLimitCtrl">
+    <span ng-class="{'text-warning' : shouldWarn()}">
+		  Remaining: {{remaining()}}
+    </span>
+		<div class="row">
+		  <textarea ng-model="message">{{message}}</textarea>
+		</div>
+		<div class="row">
+			<button ng-disabled="!hasValidLength()" ng-click="send()">Send</button>
+			<button ng-click="clear()">Clear</button>
+		</div>
+	</div>
+<script src="js/lib/angular.js"></script>
+<script src="js/controllers/GlobalModule.js"></script>
+<script src="js/controllers/HelloCtrl.js"></script>
+<script src="js/controllers/WorldCtrl.js"></script>
+<script src="js/controllers/TextAreaWithLimitCtrl.js"></script>
+</body>
+</html>
