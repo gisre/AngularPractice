@@ -1,5 +1,5 @@
-angular.module('text',[])
-  .controller('TextAreaWithLimitCtrl', function ($scope) {
+angular.module('text',['notificationsApp'])
+  .controller('TextAreaWithLimitCtrl', function ($scope, notificationsService) {
 	var MAX_LEN = 100, WARN_THRESHOLD = 20;
 	$scope.message = '';
 	$scope.remaining = function () {
@@ -12,7 +12,8 @@ angular.module('text',[])
 	  return true;
 	};
 	$scope.send = function () {
-	  console.log("send");
+	  notificationsService.push($scope.message);
+	  $scope.clear();
 	};
 	$scope.clear = function () {
 	  $scope.message = '';
